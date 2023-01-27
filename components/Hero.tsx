@@ -1,15 +1,20 @@
+import lineBottom from '../public/lineBottom.png';
+import lineTop from '../public/lineTop.png';
+
 const Hero = () => {
   return (
     <header id="up" className="bg-center bg-fixed bg-no-repeat bg-cover h-screen relative">
-      <div className="h-screen bg-opacity-50 bg-black flex items-center justify-center">
-        <div className="mx-2 text-center">
-          <h1 className="text-gray-100 font-extrabold text-4xl xs:text-5xl md:text-6xl">
-            <span className="text-white">The Vu</span>
-            </h1>
-            <h2 className="text-gray-200 font-extrabold text-3xl xs:text-4xl md:text-5xl leading-tight">
-              Minh Trang
-            </h2>
+      <div className="h-screen bg-opacity-50 bg-black flex justify-center">
+        <div className="m-20 mx-2 space-y-4 text-center font-great-vibes">
+          <img className="mx-auto" src={lineTop.src} />
+          <div className="text-gray-100 text-5xl xs:text-6xl md:text-7xl">
+            <span>Thế Vũ</span>
           </div>
+          <div className="text-gray-200 text-5xl xs:text-6xl md:text-7xl">
+            <span>Minh Trang</span>
+          </div>
+          <img className="mx-auto" src={lineBottom.src} />
+        </div>
       </div>
     </header>
   );

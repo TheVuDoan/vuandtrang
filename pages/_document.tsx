@@ -6,6 +6,8 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="icon" href="/favicon.ico" />
+          <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Great Vibes" />
+          <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Muli" />
           <meta
             name="description"
             content="See pictures from Next.js Conf and the After Party."

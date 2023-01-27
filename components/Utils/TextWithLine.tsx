@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FC, PropsWithChildren } from 'react';
 
-const TextWithLine: FC = ({ children }) => {
+const TextWithLine: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="flex items-center justify-center">
       <div className="border-t border-gray-400 w-8" />

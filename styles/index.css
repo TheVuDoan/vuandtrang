@@ -7,3 +7,15 @@
     clip-path: inset(0.6px);
   }
 }
+
+body {
+  font-family: "Muli", sans-serif;
+}
+
+header {
+  background-image: url("https://res.cloudinary.com/dhh7wcotw/image/upload/v1674806237/wedding/DSC01780_rj7sxl.jpg");
+}
+
+.font-great-vibes {
+  font-family: "Great Vibes", cursive;
+}
