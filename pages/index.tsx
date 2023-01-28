@@ -1,16 +1,18 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import GroomAndBride from '../components/GroomAndBride'
-import Hero from '../components/Hero'
+import type { NextPage } from 'next';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import AlbumSlider from '../components/AlbumSlider';
+import GroomAndBride from '../components/GroomAndBride';
+import Hero from '../components/Hero';
+import WeddingInfo from '../components/WeddingInfo';
 
 const Home: NextPage = () => {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <>
       <Head>
-        <title>Thiep cuoi</title>
+        <title>Thiệp cưới</title>
         <meta
           property="og:image"
           content="https://nextjsconf-pics.vercel.app/og-image.png"
@@ -22,6 +24,8 @@ const Home: NextPage = () => {
       </Head>
       <Hero />
       <GroomAndBride />
+      <AlbumSlider />
+      <WeddingInfo />
       <footer className="p-6 text-center text-white/80 sm:p-12">
         Thank you to{' '}
         <a

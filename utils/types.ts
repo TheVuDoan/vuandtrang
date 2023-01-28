@@ -17,3 +17,15 @@ export interface SharedModalProps {
   navigation: boolean
   direction?: number
 }
+
+export interface WeddingInfoModalProps {
+  buttonLabel: string
+  location: string
+  locationTitle: string
+  timeline: WeddingTimelineProps[]
+}
+
+export interface WeddingTimelineProps {
+  time: string
+  activity: string
+}
