@@ -21,7 +21,7 @@ const data = [
 
 const GroomAndBride = () => {
   return (
-    <section className="pt-20 pb-4 mx-10">
+    <section className="pt-14 pb-4 mx-10">
       <h3 className="text-4xl text-center font-great-vibes text-gray-700 mb-6">
         Cô dâu & Chú rể
       </h3>
