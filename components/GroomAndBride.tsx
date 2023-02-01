@@ -25,10 +25,10 @@ const GroomAndBride = () => {
       <h3 className="text-4xl text-center font-great-vibes text-gray-700 mb-6">
         Cô dâu & Chú rể
       </h3>
-      <div className="w-full flex flex-wrap pb-20">
+      <div className="w-full flex flex-wrap">
         {data.map((item) =>
           <div className="w-full md:w-1/2 px-4" key={item.alt}>
-            <div className="flex flex-col items-center py-14 sm:px-8 lg:p-20 text-center">
+            <div className="flex flex-col items-center py-5 sm:px-8 lg:p-20 text-center">
               <img
                 src={item.image.src}
                 alt={item.alt}

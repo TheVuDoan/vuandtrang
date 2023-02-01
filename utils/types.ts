@@ -19,9 +19,10 @@ export interface SharedModalProps {
 }
 
 export interface WeddingInfoModalProps {
-  buttonLabel: string
+  cardTitle: string
   location: string
   locationTitle: string
+  time: string
   timeline: WeddingTimelineProps[]
 }
 

@@ -4,9 +4,10 @@ import type { WeddingInfoModalProps } from '../utils/types'
 
 const data: WeddingInfoModalProps[] = [
   {
-    buttonLabel: 'Lễ cưới nhà gái',
+    cardTitle: 'Lễ cưới nhà gái',
     location: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3135.0460639195676!2d106.69116121547967!3d20.863217909550816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314a7be3b26b7f15%3A0xfb767616d10e5e50!2zVHJ1bmcgdMOibSB0aeG7h2MgY8aw4bubaSBI4bqjaSDEkMSDbmcgUGxhemEgSOG6o2kgUGjDsm5n!5e0!3m2!1svi!2s!4v1674915525839!5m2!1svi!2s',
     locationTitle: 'Trung Tâm Tiệc Cưới Hải Đăng Plaza, 19 Trần Khánh Dư, Máy Tơ, Ngô Quyền, Hải Phòng',
+    time: '17 giờ 30\nngày 1 tháng 3 năm 2023',
     timeline: [
       {
         time: '17:00',
@@ -23,9 +24,10 @@ const data: WeddingInfoModalProps[] = [
     ]
   },
   {
-    buttonLabel: 'Lễ cưới nhà trai',
+    cardTitle: 'Lễ cưới nhà trai',
     location: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.3912117178347!2d105.81358851543025!3d21.01702708600477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab64a157d313%3A0xc315cd481b1a6e5!2zVHJ1bmcgVMOibSBUaeG7h2MgQ8aw4bubaSBTdGFyIEdhbGF4eQ!5e0!3m2!1svi!2s!4v1674912984562!5m2!1svi!2s',
     locationTitle: 'Trung Tâm Tiệc Cưới Star Galaxy, 87 Láng Hạ, Thành Công, Ba Đình, Hà Nội',
+    time: '11 giờ 00\nngày 11 tháng 3 năm 2023',
     timeline: [
       {
         time: '10:30',
@@ -51,8 +53,8 @@ const WeddingInfo = () => {
       </h3>
       <div className="w-full flex flex-wrap pb-20 text-center">
         {data.map((item) =>
-          <div className="w-full md:w-1/2 px-4" key={item.buttonLabel}>
-            <div className="flex flex-col items-center py-14 sm:px-8 lg:p-20 text-center">
+          <div className="w-full md:w-1/2 px-4" key={item.cardTitle}>
+            <div className="flex flex-col items-center py-4 sm:px-8 lg:p-20 text-center">
               <InfoModal {...item} />
             </div>
           </div>
@@ -67,13 +69,16 @@ const InfoModal: React.FC<WeddingInfoModalProps> = (props: WeddingInfoModalProps
 
   return (
     <>
-      <div className="inset-0 flex items-center justify-center">
+      <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{props.cardTitle}</h5>
+        <p className="mb-3 font-normal text-gray-700 whitespace-pre-wrap"><b>Thời gian:</b> {props.time}</p>
+        <p className="mb-3 font-normal text-gray-700 whitespace-pre-wrap"><b>Địa điểm:</b> {props.locationTitle}</p>
         <button
           type="button"
           onClick={() => setIsOpen(true)}
           className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
         >
-          {props.buttonLabel}
+          Thông tin chi tiết
         </button>
       </div>
       <Transition appear show={isOpen} as={Fragment}>
