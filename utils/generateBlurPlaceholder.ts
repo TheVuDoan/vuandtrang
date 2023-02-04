@@ -4,7 +4,7 @@ import type { ImageProps } from './types'
 
 const cache = new Map<ImageProps, string>()
 
-export default async function getBase64ImageUrl(
+export default async function generateBlurPlaceholder(
   image: ImageProps
 ): Promise<string> {
   let url = cache.get(image)

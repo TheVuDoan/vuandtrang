@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react'
+import { MapPinIcon, CalendarIcon } from '@heroicons/react/24/outline';
 import type { WeddingInfoModalProps } from '../utils/types'
 
 const data: WeddingInfoModalProps[] = [
@@ -7,7 +8,7 @@ const data: WeddingInfoModalProps[] = [
     cardTitle: 'Lễ cưới nhà gái',
     location: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3135.0460639195676!2d106.69116121547967!3d20.863217909550816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314a7be3b26b7f15%3A0xfb767616d10e5e50!2zVHJ1bmcgdMOibSB0aeG7h2MgY8aw4bubaSBI4bqjaSDEkMSDbmcgUGxhemEgSOG6o2kgUGjDsm5n!5e0!3m2!1svi!2s!4v1674915525839!5m2!1svi!2s',
     locationTitle: 'Trung Tâm Tiệc Cưới Hải Đăng Plaza, 19 Trần Khánh Dư, Máy Tơ, Ngô Quyền, Hải Phòng',
-    time: '17 giờ 30\nngày 1 tháng 3 năm 2023',
+    time: '17:30 1/3/2023',
     timeline: [
       {
         time: '17:00',
@@ -27,7 +28,7 @@ const data: WeddingInfoModalProps[] = [
     cardTitle: 'Lễ cưới nhà trai',
     location: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.3912117178347!2d105.81358851543025!3d21.01702708600477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab64a157d313%3A0xc315cd481b1a6e5!2zVHJ1bmcgVMOibSBUaeG7h2MgQ8aw4bubaSBTdGFyIEdhbGF4eQ!5e0!3m2!1svi!2s!4v1674912984562!5m2!1svi!2s',
     locationTitle: 'Trung Tâm Tiệc Cưới Star Galaxy, 87 Láng Hạ, Thành Công, Ba Đình, Hà Nội',
-    time: '11 giờ 00\nngày 11 tháng 3 năm 2023',
+    time: '11:00 11/3/2023',
     timeline: [
       {
         time: '10:30',
@@ -47,8 +48,8 @@ const data: WeddingInfoModalProps[] = [
 
 const WeddingInfo = () => {
   return (
-    <section className="pt-20 pb-4 mx-10">
-      <h3 className="text-4xl text-center font-great-vibes text-gray-700 mb-6">
+    <section className="pt-20 pb-4 bg-[url('../public/orangeBackground.jpg')]">
+      <h3 className="text-5xl text-center font-great-vibes text-gray-700 mb-6">
         Thông tin lễ cưới
       </h3>
       <div className="w-full flex flex-wrap pb-20 text-center">
@@ -71,8 +72,12 @@ const InfoModal: React.FC<WeddingInfoModalProps> = (props: WeddingInfoModalProps
     <>
       <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">{props.cardTitle}</h5>
-        <p className="mb-3 font-normal text-gray-700 whitespace-pre-wrap"><b>Thời gian:</b> {props.time}</p>
-        <p className="mb-3 font-normal text-gray-700 whitespace-pre-wrap"><b>Địa điểm:</b> {props.locationTitle}</p>
+        <p className="mb-3 font-normal text-gray-700 whitespace-pre-wrap">
+          <CalendarIcon className="h-4 w-4 inline mb-1" /> {props.time}
+        </p>
+        <p className="mb-3 font-normal text-gray-700 whitespace-pre-wrap">
+          <MapPinIcon className="h-4 w-4 inline mb-1" /> {props.locationTitle}
+        </p>
         <button
           type="button"
           onClick={() => setIsOpen(true)}

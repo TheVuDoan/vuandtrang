@@ -1,41 +1,52 @@
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { createRef, useEffect, useRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
-const AlbumSlider = () => {
-  const slides = [
-    {
-      url: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2620&q=80',
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80',
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80',
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2253&q=80',
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80',
-    },
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
+const AlbumSlider = ({slides}) => {
+  const [currentImage, setCurrentImage] = useState(0);
   const timeoutRef = useRef(null);
+  const refs = slides.reduce((acc, val, i) => {
+    acc[i] = createRef();
+    return acc;
+  }, {});
 
-  const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
+  const scrollToImage = i => {
+    setCurrentImage(i);
+    refs[i].current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest',
+      inline: 'start',
+    });
   };
 
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === slides.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
+  const totalImages = slides.length;
+
+  const nextImage = () => {
+    if (currentImage >= totalImages - 1) {
+      scrollToImage(0);
+    } else {
+      scrollToImage(currentImage + 1);
+    }
   };
+
+  const previousImage = () => {
+    if (currentImage === 0) {
+      scrollToImage(totalImages - 1);
+    } else {
+      scrollToImage(currentImage - 1);
+    }
+  };
+
+  // const checkInViewport = (el) => {
+  //   const rect = el.getBoundingClientRect();
+  //   return (
+  //     rect.top >= 0 &&
+  //     rect.left >= 0 &&
+  //     rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+  //     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  //   );
+  // }
 
   const resetTimeout = () => {
     if (timeoutRef.current) {
@@ -43,31 +54,49 @@ const AlbumSlider = () => {
     }
   };
 
-  const handlers = useSwipeable({
-    onSwipedLeft: () => {
-      nextSlide()
-    },
-    onSwipedRight: () => {
-      prevSlide()
-    },
-    trackMouse: true,
-  })
-
   useEffect(() => {
+    // console.log(checkInViewport(document.querySelector('.carousel')))
+    // if (!checkInViewport(document.querySelector('.carousel'))) return;
+
     resetTimeout();
     timeoutRef.current = setTimeout(
-      () => nextSlide(),
-      3000
+      () => nextImage(),
+      5000
     );
 
     return () => {
       resetTimeout();
     };
-  }, [currentIndex]);
+  }, [currentImage]);
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      nextImage()
+    },
+    onSwipedRight: () => {
+      previousImage()
+    },
+    trackMouse: true,
+  })
+
+  const arrowStyle =
+    'w-28 absolute top-0 bottom-0 flex items-center justify-center text-white/75';
+
+  const sliderControl = isLeft => (
+    <button
+      type="button"
+      onClick={isLeft ? previousImage : nextImage}
+      className={`${arrowStyle} ${isLeft ? 'left-2' : 'right-2'}`}
+    >
+      <span role="img" aria-label={`Arrow ${isLeft ? 'left' : 'right'}`}>
+        {isLeft ? <ChevronLeftIcon className="h-10 w-10" /> : <ChevronRightIcon className="h-10 w-10" />}
+      </span>
+    </button>
+  );
 
   return (
-    <section className="pt-14 pb-4">
-      <h3 className="text-4xl text-center font-great-vibes text-gray-700 mb-6">
+    <section className="pt-20 pb-4">
+      <h3 className="text-5xl text-center font-great-vibes text-gray-700 mb-6">
         Album cưới
       </h3>
       <div className="w-full text-center">
@@ -80,27 +109,18 @@ const AlbumSlider = () => {
           </button>
         </Link>
       </div>
-      <div className='max-w-[1400px] h-[780px] w-full m-auto p-4 relative group' {...handlers}>
-        <div
-          style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-          className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
-        ></div>
-        {/* Left Arrow */}
-        <button
-          className="w-28 absolute top-0 bottom-0 flex items-center justify-center text-white/75 left-0"
-          style={{ transform: 'translate3d(0, 0, 0)' }}
-          onClick={prevSlide}
-        >
-          <ChevronLeftIcon className="h-10 w-10" />
-        </button>
-        {/* Right Arrow */}
-        <button
-          className="w-28 absolute top-0 bottom-0 flex items-center justify-center text-white/75 right-0"
-          style={{ transform: 'translate3d(0, 0, 0)' }}
-          onClick={nextSlide}
-        >
-          <ChevronRightIcon className="h-10 w-10" />
-        </button>
+      <div className="md:px-72 flex justify-center w-screen items-center">
+        <div className="relative w-full">
+          <div className="carousel">
+            {sliderControl(true)}
+            {slides.map((img, i) => (
+              <div className="w-full flex-shrink-0" key={img.id} ref={refs[i]}>
+                <img src={img.blurDataUrl} className="w-full object-contain" />
+              </div>
+            ))}
+            {sliderControl(false)}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -12,11 +12,15 @@ body {
   font-family: "Muli", sans-serif;
 }
 
-header {
-  background-image: url("https://res.cloudinary.com/dhh7wcotw/image/upload/v1674806237/wedding/DSC01780_rj7sxl.jpg");
-  background-size: cover;
-}
-
 .font-great-vibes {
   font-family: "Great Vibes", cursive;
+}
+
+.carousel {
+  display: inline-flex;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
