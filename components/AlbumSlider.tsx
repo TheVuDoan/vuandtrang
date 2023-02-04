@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import { createRef, useEffect, useRef, useState } from 'react';
+import { createRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 const AlbumSlider = ({slides}) => {
   const [currentImage, setCurrentImage] = useState(0);
-  const timeoutRef = useRef(null);
   const refs = slides.reduce((acc, val, i) => {
     acc[i] = createRef();
     return acc;
@@ -38,37 +37,6 @@ const AlbumSlider = ({slides}) => {
     }
   };
 
-  // const checkInViewport = (el) => {
-  //   const rect = el.getBoundingClientRect();
-  //   return (
-  //     rect.top >= 0 &&
-  //     rect.left >= 0 &&
-  //     rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-  //     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  //   );
-  // }
-
-  const resetTimeout = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-  };
-
-  useEffect(() => {
-    // console.log(checkInViewport(document.querySelector('.carousel')))
-    // if (!checkInViewport(document.querySelector('.carousel'))) return;
-
-    resetTimeout();
-    timeoutRef.current = setTimeout(
-      () => nextImage(),
-      5000
-    );
-
-    return () => {
-      resetTimeout();
-    };
-  }, [currentImage]);
-
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       nextImage()
@@ -80,16 +48,16 @@ const AlbumSlider = ({slides}) => {
   })
 
   const arrowStyle =
-    'w-28 absolute top-0 bottom-0 flex items-center justify-center text-white/75';
+    'absolute top-0 bottom-0 flex items-center justify-center text-gray-700';
 
   const sliderControl = isLeft => (
     <button
       type="button"
       onClick={isLeft ? previousImage : nextImage}
-      className={`${arrowStyle} ${isLeft ? 'left-2' : 'right-2'}`}
+      className={`${arrowStyle} ${isLeft ? 'md:-left-12 left-2' : 'md:-right-12 right-2'}`}
     >
       <span role="img" aria-label={`Arrow ${isLeft ? 'left' : 'right'}`}>
-        {isLeft ? <ChevronLeftIcon className="h-10 w-10" /> : <ChevronRightIcon className="h-10 w-10" />}
+        {isLeft ? <ChevronLeftIcon className="h-8 w-8" /> : <ChevronRightIcon className="h-8 w-8" />}
       </span>
     </button>
   );

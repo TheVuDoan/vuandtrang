@@ -3,7 +3,7 @@ import lineTop from '../public/lineTop.png';
 
 const Hero = () => {
   return (
-    <header className="bg-center bg-fixed bg-no-repeat bg-cover bg-[url('../public/hero.jpg')] h-screen relative">
+    <header className="bg-center bg-no-repeat bg-cover bg-[url('../public/hero.jpg')] h-screen relative">
       <div className="h-screen bg-opacity-50 bg-black flex justify-center">
         <div className="m-20 mx-2 space-y-4 text-center font-great-vibes">
           <img className="mx-auto" src={lineTop.src} />
