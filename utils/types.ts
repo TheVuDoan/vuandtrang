@@ -28,5 +28,6 @@ export interface WeddingInfoModalProps {
 
 export interface WeddingTimelineProps {
   time: string
+  icon: JSX.Element
   activity: string
 }

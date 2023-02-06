@@ -5,9 +5,10 @@ import AlbumSlider from '../components/AlbumSlider';
 import FooterImage from '../components/FooterImage';
 import GroomAndBride from '../components/GroomAndBride';
 import Hero from '../components/Hero';
+import Introduction from '../components/Introduction';
 import WeddingInfo from '../components/WeddingInfo';
 import cloudinary from '../utils/cloudinary';
-import getBase64ImageUrl from '../utils/getBase64ImageUrl'
+import getBase64ImageUrl from '../utils/getBase64ImageUrl';
 import type { ImageProps } from '../utils/types';
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
@@ -16,17 +17,14 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   return (
     <>
       <Head>
-        <title>Thiệp cưới</title>
+        <title>VuandTrang Wedding Site!</title>
         <meta
           property="og:image"
-          content="https://nextjsconf-pics.vercel.app/og-image.png"
-        />
-        <meta
-          name="twitter:image"
-          content="https://nextjsconf-pics.vercel.app/og-image.png"
+          content="https://vandt.day/hero.jpg"
         />
       </Head>
       <Hero />
+      <Introduction />
       <GroomAndBride />
       <AlbumSlider slides={images} />
       <WeddingInfo />
@@ -45,7 +43,7 @@ export async function getStaticProps() {
     .execute();
   let reducedResults: ImageProps[] = [];
 
-  let i = 0
+  let i = 0;
   for (let result of results.resources) {
     reducedResults.push({
       id: i,
@@ -53,22 +51,22 @@ export async function getStaticProps() {
       width: result.width,
       public_id: result.public_id,
       format: result.format,
-    })
-    i++
+    });
+    i++;
   }
 
   const blurImagePromises = results.resources.map((image: ImageProps) => {
-    return getBase64ImageUrl(image)
+    return getBase64ImageUrl(image);
   })
-  const imagesWithBlurDataUrls = await Promise.all(blurImagePromises)
+  const imagesWithBlurDataUrls = await Promise.all(blurImagePromises);
 
   for (let i = 0; i < reducedResults.length; i++) {
-    reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i]
+    reducedResults[i].blurDataUrl = imagesWithBlurDataUrls[i];
   }
 
   return {
     props: {
-      images: reducedResults,
+      images: reducedResults
     },
   }
 }

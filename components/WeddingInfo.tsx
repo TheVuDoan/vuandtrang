@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react'
-import { MapPinIcon, CalendarIcon } from '@heroicons/react/24/outline';
-import type { WeddingInfoModalProps } from '../utils/types'
+import { MapPinIcon, CalendarIcon, XMarkIcon, ChatBubbleLeftRightIcon, GiftIcon, CakeIcon } from '@heroicons/react/24/outline';
+import type { WeddingInfoModalProps } from '../utils/types';
 
 const data: WeddingInfoModalProps[] = [
   {
@@ -11,16 +11,19 @@ const data: WeddingInfoModalProps[] = [
     time: '17:30 1/3/2023',
     timeline: [
       {
-        time: '17:00',
-        activity: 'Đón khách, chụp ảnh lưu niệm cùng cô dâu và chú rể'
+        time: '17:00 - Đón Khách',
+        icon: <ChatBubbleLeftRightIcon />,
+        activity: 'Trò chuyện và chụp ảnh lưu niệm cùng cô dâu và chú rể.'
       },
       {
-        time: '17:30',
-        activity: 'Lễ thành hôn'
+        time: '17:30 - Lễ thành hôn',
+        icon: <GiftIcon />,
+        activity: 'Lễ thành hôn.'
       },
       {
-        time: '18:00',
-        activity: 'Khai tiệc'
+        time: '18:00 - Khai tiệc',
+        icon: <CakeIcon />,
+        activity: 'Tận hưỡng bữa tối và thưởng thức những món quà văn nghệ của gia đình, bạn bè cô dâu chú rể.'
       }
     ]
   },
@@ -31,16 +34,19 @@ const data: WeddingInfoModalProps[] = [
     time: '11:00 11/3/2023',
     timeline: [
       {
-        time: '10:30',
-        activity: 'Đón khách, chụp ảnh lưu niệm cùng cô dâu và chú rể'
+        time: '10:30 - Đón Khách',
+        icon: <ChatBubbleLeftRightIcon />,
+        activity: 'Đón khách, chụp ảnh lưu niệm cùng cô dâu và chú rể.'
       },
       {
-        time: '11:00',
-        activity: 'Lễ thành hôn'
+        time: '11:00 - Lễ thành hôn',
+        icon: <GiftIcon />,
+        activity: 'Lễ thành hôn.'
       },
       {
-        time: '11:30',
-        activity: 'Khai tiệc'
+        time: '11:30 - Khai tiệc',
+        icon: <CakeIcon />,
+        activity: 'Tận hưỡng bữa tối và thưởng thức những món quà văn nghệ của gia đình, bạn bè cô dâu chú rể.'
       }
     ]
   }
@@ -48,14 +54,14 @@ const data: WeddingInfoModalProps[] = [
 
 const WeddingInfo = () => {
   return (
-    <section className="pt-20 pb-4 bg-[url('../public/orangeBackground.jpg')]">
-      <h3 className="text-5xl text-center font-great-vibes text-gray-700 mb-6">
+    <section className="p-10 bg-[url('../public/orangeBackground.jpg')]">
+      <h1 className="text-5xl text-center font-great-vibes text-gray-700 mb-6">
         Thông tin lễ cưới
-      </h3>
-      <div className="w-full flex flex-wrap pb-20 text-center">
+      </h1>
+      <div className="w-full flex flex-wrap text-center">
         {data.map((item) =>
-          <div className="w-full md:w-1/2 px-4" key={item.cardTitle}>
-            <div className="flex flex-col items-center py-4 sm:px-8 lg:p-20 text-center">
+          <div className="w-full md:w-1/2" key={item.cardTitle}>
+            <div className="flex flex-col items-center py-4 lg:p-20">
               <InfoModal {...item} />
             </div>
           </div>
@@ -70,18 +76,18 @@ const InfoModal: React.FC<WeddingInfoModalProps> = (props: WeddingInfoModalProps
 
   return (
     <>
-      <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900">{props.cardTitle}</h5>
-        <p className="mb-3 font-normal text-gray-700 whitespace-pre-wrap">
+      <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-md shadow">
+        <h2 className="mb-2 text-2xl font-bold text-gray-700">{props.cardTitle}</h2>
+        <p className="mb-2 text-gray-700">
           <CalendarIcon className="h-4 w-4 inline mb-1" /> {props.time}
         </p>
-        <p className="mb-3 font-normal text-gray-700 whitespace-pre-wrap">
+        <p className="mb-3 text-gray-700 whitespace-pre-wrap">
           <MapPinIcon className="h-4 w-4 inline mb-1" /> {props.locationTitle}
         </p>
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+          className="text-white bg-[#ee9492] rounded-md text-sm px-5 py-2.5"
         >
           Thông tin chi tiết
         </button>
@@ -101,7 +107,7 @@ const InfoModal: React.FC<WeddingInfoModalProps> = (props: WeddingInfoModalProps
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <div className="flex min-h-full items-center p-4">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -111,24 +117,29 @@ const InfoModal: React.FC<WeddingInfoModalProps> = (props: WeddingInfoModalProps
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <div className="flex flex-col-reverse md:flex-row mt-2">
-                    <div className="md:w-1/2 w-full px-4 mb-6 md:mb-0">
-                      <Dialog.Title
-                        as="h2"
-                        className="text-lg font-medium leading-6 text-gray-900"
-                      >
+                <Dialog.Panel className="w-full transform overflow-hidden rounded-md bg-white p-6 align-middle shadow-xl transition-all">
+                  <Dialog.Title
+                    as="div"
+                    className="text-lg leading-6 text-gray-500 mb-4"
+                  >
+                    <button className="float-right" onClick={() => setIsOpen(false)} >
+                      <XMarkIcon className="h-4 w-4" />
+                    </button>
+                  </Dialog.Title>
+                  <div className="flex flex-col-reverse md:flex-row">
+                    <div className="w-full md:w-1/2 px-4">
+                      <h2 className="text-lg leading-6 text-gray-900 font-bold mb-2">
                         Địa điểm
-                      </Dialog.Title>
-                      <div className="sticky top-8 text-center md:text-left">
+                      </h2>
+                      <div className="text-left">
                         <p className="mb-4 text-gray-700">
                           {props.locationTitle}
                         </p>
                       </div>
-                      <div className="p-2 bg-white rounded-lg shadow-lg">
+                      <div className="p-2 bg-white rounded-md shadow-md">
                         <iframe
                           src={props.location}
-                          className="w-full h-[480px] md:h-[350px]"
+                          className="w-full h-[350px]"
                           style={{ border: 0 }}
                           allowFullScreen
                           loading="lazy"
@@ -139,19 +150,18 @@ const InfoModal: React.FC<WeddingInfoModalProps> = (props: WeddingInfoModalProps
                         />
                       </div>
                     </div>
-                    <div className="w-full px-4 md:w-1/2">
-                      <Dialog.Title
-                        as="h2"
-                        className="text-lg font-medium leading-6 text-gray-900"
-                      >
+                    <div className="w-full md:w-1/2 px-4">
+                      <h2 className="text-lg leading-6 text-gray-900 font-bold mb-4">
                         Lịch trình đám cưới
-                      </Dialog.Title>
-                      <ol className="relative border-l border-gray-200 dark:border-gray-700">
+                      </h2>
+                      <ol className="relative border-l border-gray-200">
                         {props.timeline.map((milestone) => 
                           <li className="mb-10 ml-4" key={milestone.time}>
-                            <div className="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
-                            <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">{milestone.time}</time>
-                            <p className="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">{milestone.activity}</p>
+                            <div className="absolute w-4 h-4 mt-0.5 -left-2 border border-white">
+                              {milestone.icon}
+                            </div>
+                            <p className="text-sm font-bold text-gray-700">{milestone.time}</p>
+                            <p className="mb-4 text-base font-normal text-gray-500">{milestone.activity}</p>
                           </li>
                         )}
                       </ol>
