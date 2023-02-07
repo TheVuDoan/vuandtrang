@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { createRef, useState } from 'react';
-import { useSwipeable } from 'react-swipeable'
+import { useSwipeable } from 'react-swipeable';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 const AlbumSlider = ({slides}) => {
@@ -12,11 +12,15 @@ const AlbumSlider = ({slides}) => {
 
   const scrollToImage = i => {
     setCurrentImage(i);
-    refs[i].current.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'start',
-    });
+    const image = refs[i].current
+    setTimeout(function () {
+      image.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start',
+      });
+    }, 100);
+    
   };
 
   const totalImages = slides.length;
@@ -48,13 +52,13 @@ const AlbumSlider = ({slides}) => {
   })
 
   const arrowStyle =
-    'absolute top-0 bottom-0 flex items-center justify-center text-gray-700';
+    'absolute top-0 bottom-0 flex items-center justify-center text-gray-500';
 
   const sliderControl = isLeft => (
     <button
       type="button"
       onClick={isLeft ? previousImage : nextImage}
-      className={`${arrowStyle} ${isLeft ? 'md:-left-12 left-2' : 'md:-right-12 right-2'}`}
+      className={`${arrowStyle} ${isLeft ? 'md:-left-12 -left-8' : 'md:-right-12 -right-8'}`}
     >
       <span role="img" aria-label={`Arrow ${isLeft ? 'left' : 'right'}`}>
         {isLeft ? <ChevronLeftIcon className="h-8 w-8" /> : <ChevronRightIcon className="h-8 w-8" />}
@@ -63,21 +67,21 @@ const AlbumSlider = ({slides}) => {
   );
 
   return (
-    <section className="pt-20 pb-4">
-      <h3 className="text-5xl text-center font-great-vibes text-gray-700 mb-6">
+    <section className="py-10 px-10">
+      <h1 className="text-5xl text-center font-great-vibes text-gray-700 mb-6">
         Album cưới
-      </h3>
-      <div className="w-full text-center">
+      </h1>
+      <div className="text-center">
         <Link href="/album">
           <button
             type="button"
-            className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+            className="text-white bg-[#ee9492] rounded-md text-sm px-5 py-2.5 mb-4"
           >
-            Xem toàn bộ Album ảnh cưới
+            Xem toàn bộ Album
           </button>
         </Link>
       </div>
-      <div className="md:px-72 flex justify-center w-screen items-center">
+      <div className="md:px-72 flex items-center" {...handlers}>
         <div className="relative w-full">
           <div className="carousel">
             {sliderControl(true)}

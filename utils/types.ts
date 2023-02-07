@@ -8,16 +8,6 @@ export interface ImageProps {
   blurDataUrl?: string
 }
 
-export interface SharedModalProps {
-  index: number
-  images?: ImageProps[]
-  currentPhoto?: ImageProps
-  changePhotoId: (newVal: number) => void
-  closeModal: () => void
-  navigation: boolean
-  direction?: number
-}
-
 export interface WeddingInfoModalProps {
   cardTitle: string
   location: string
@@ -28,5 +18,6 @@ export interface WeddingInfoModalProps {
 
 export interface WeddingTimelineProps {
   time: string
+  icon: JSX.Element
   activity: string
 }

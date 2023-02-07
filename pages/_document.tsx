@@ -10,20 +10,14 @@ class MyDocument extends Document {
           <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Muli" />
           <meta
             name="description"
-            content="See pictures from Next.js Conf and the After Party."
+            content="VuandTrang Wedding Site!"
           />
-          <meta property="og:site_name" content="nextjsconf-pics.vercel.app" />
+          <meta property="og:site_name" content="vandt.day" />
           <meta
             property="og:description"
-            content="See pictures from Next.js Conf and the After Party."
+            content="VuandTrang Wedding Site!"
           />
-          <meta property="og:title" content="Next.js Conf 2022 Pictures" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Next.js Conf 2022 Pictures" />
-          <meta
-            name="twitter:description"
-            content="See pictures from Next.js Conf and the After Party."
-          />
+          <meta property="og:title" content="VuandTrang Wedding Site!" />
         </Head>
         <body className="antialiased">
           <Main />
