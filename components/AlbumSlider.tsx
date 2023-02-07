@@ -67,8 +67,8 @@ const AlbumSlider = ({slides}) => {
   );
 
   return (
-    <section className="pt-20 pb-10 px-10">
-      <h1 className="text-5xl text-center font-great-vibes text-gray-700 mb-4">
+    <section className="py-10 px-10">
+      <h1 className="text-5xl text-center font-great-vibes text-gray-700 mb-6">
         Album cưới
       </h1>
       <div className="text-center">

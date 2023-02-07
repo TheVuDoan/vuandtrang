@@ -6,6 +6,7 @@ import FooterImage from '../components/FooterImage';
 import GroomAndBride from '../components/GroomAndBride';
 import Hero from '../components/Hero';
 import Introduction from '../components/Introduction';
+import OurStory from '../components/OurStory';
 import WeddingInfo from '../components/WeddingInfo';
 import cloudinary from '../utils/cloudinary';
 import getBase64ImageUrl from '../utils/getBase64ImageUrl';
@@ -26,8 +27,9 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
       <Hero />
       <Introduction />
       <GroomAndBride />
-      <AlbumSlider slides={images} />
+      <OurStory />
       <WeddingInfo />
+      <AlbumSlider slides={images} />
       <FooterImage />
     </>
   )
