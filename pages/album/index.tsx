@@ -4,7 +4,7 @@ import Image from 'next/image';
 import cloudinary from '../../utils/cloudinary';
 import generateBlurPlaceholder from '../../utils/generateBlurPlaceholder';
 import type { ImageProps } from '../../utils/types';
-import logo from '../../public/logo.jpg';
+import logo from '../../public/logo.svg';
 import Link from 'next/link';
 
 const Album: NextPage = ({ images }: { images: ImageProps[] }) => {
