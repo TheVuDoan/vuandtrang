@@ -8,7 +8,6 @@ import Hero from '../components/Hero';
 import Introduction from '../components/Introduction';
 import OurStory from '../components/OurStory';
 import Rsvp from '../components/Rsvp';
-import SoundPlayer from '../components/SoundPlayer';
 import WeddingInfo from '../components/WeddingInfo';
 import cloudinary from '../utils/cloudinary';
 import getBase64ImageUrl from '../utils/getBase64ImageUrl';
@@ -33,7 +32,6 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
       <WeddingInfo />
       <AlbumSlider slides={images} />
       <Rsvp />
-      <SoundPlayer />
     </>
   )
 }
