@@ -1,12 +1,14 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+
 import AlbumSlider from '../components/AlbumSlider';
 import GroomAndBride from '../components/GroomAndBride';
 import Hero from '../components/Hero';
 import Introduction from '../components/Introduction';
 import OurStory from '../components/OurStory';
 import Rsvp from '../components/Rsvp';
+import SoundPlayer from '../components/SoundPlayer';
 import WeddingInfo from '../components/WeddingInfo';
 import cloudinary from '../utils/cloudinary';
 import getBase64ImageUrl from '../utils/getBase64ImageUrl';
@@ -21,7 +23,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
         <title>VuandTrang Wedding Site!</title>
         <meta
           property="og:image"
-          content="https://vandt.day/hero.jpg"
+          content="https://vandt.day/hero.webp"
         />
       </Head>
       <Hero />
@@ -31,6 +33,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
       <WeddingInfo />
       <AlbumSlider slides={images} />
       <Rsvp />
+      <SoundPlayer />
     </>
   )
 }
