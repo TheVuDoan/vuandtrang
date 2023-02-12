@@ -2,11 +2,11 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import AlbumSlider from '../components/AlbumSlider';
-import FooterImage from '../components/FooterImage';
 import GroomAndBride from '../components/GroomAndBride';
 import Hero from '../components/Hero';
 import Introduction from '../components/Introduction';
 import OurStory from '../components/OurStory';
+import Rsvp from '../components/Rsvp';
 import WeddingInfo from '../components/WeddingInfo';
 import cloudinary from '../utils/cloudinary';
 import getBase64ImageUrl from '../utils/getBase64ImageUrl';
@@ -30,7 +30,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
       <OurStory />
       <WeddingInfo />
       <AlbumSlider slides={images} />
-      <FooterImage />
+      <Rsvp />
     </>
   )
 }

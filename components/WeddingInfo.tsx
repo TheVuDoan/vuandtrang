@@ -46,7 +46,7 @@ const data: WeddingInfoModalProps[] = [
       {
         time: '11:30 - Khai tiệc',
         icon: <CakeIcon />,
-        activity: 'Tận hưỡng bữa tối và thưởng thức những món quà văn nghệ của gia đình, bạn bè cô dâu chú rể.'
+        activity: 'Tận hưỡng bữa trưa và thưởng thức những món quà văn nghệ của gia đình, bạn bè cô dâu chú rể.'
       }
     ]
   }
@@ -160,7 +160,7 @@ const InfoModal: React.FC<WeddingInfoModalProps> = (props: WeddingInfoModalProps
                             <div className="absolute w-4 h-4 mt-0.5 -left-2 border border-white">
                               {milestone.icon}
                             </div>
-                            <p className="text-sm font-bold text-gray-700">{milestone.time}</p>
+                            <p className="text-sm font-bold text-[#ee9492]">{milestone.time}</p>
                             <p className="mb-4 text-base font-normal text-gray-500">{milestone.activity}</p>
                           </li>
                         )}
