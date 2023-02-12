@@ -75,7 +75,7 @@ const AlbumSlider = ({slides}) => {
         <Link href="/album">
           <button
             type="button"
-            className="text-white bg-[#ee9492] rounded-md text-sm px-5 py-2.5 mb-4"
+            className="text-white bg-[#ee9492] rounded-md text-sm px-5 py-2.5 mb-8"
           >
             Xem toàn bộ Album
           </button>
