@@ -5,6 +5,7 @@ const Rsvp = () => {
   interface formDataType {[key:string]: FormDataEntryValue}
   const responseBody: formDataType = {}
 
+  const [participate, setParticipate] = useState(true);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,13 +13,16 @@ const Rsvp = () => {
     const formData = new FormData(e.currentTarget as HTMLFormElement);
     formData.forEach((value, property:string) => responseBody[property] = value);
     try {
-      await table.create([{ fields: { 
-        "name": responseBody.name.toString(),
-        "participate": responseBody.participate === "yes" ? true : false,
-        "location": responseBody.location === "groom" ? "Nhà trai" : "Nhà gái",
-        "numOfGuest": Number(responseBody.numOfGuest.toString()),
-        "message": responseBody.message.toString()
-      } }]);
+      const location = !participate ? "" : responseBody.location === "groom" ? "Nhà trai" : "Nhà gái";
+      const numOfGuest = !participate ? 0 : Number(responseBody.numOfGuest.toString())
+      const fields = {
+        "name": responseBody.name?.toString(),
+        "participate": participate,
+        "location": location,
+        "numOfGuest": numOfGuest,
+        "message": responseBody.message?.toString()
+      }
+      await table.create([{ fields: fields}]);
     } catch (error) {
       console.log(error);
     }
@@ -41,6 +45,7 @@ const Rsvp = () => {
                 name="name"
                 id="name"
                 placeholder="Họ và tên"
+                required
                 className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-[#ee9492] focus:shadow-md"
               />
             </div>
@@ -56,6 +61,8 @@ const Rsvp = () => {
                     id="yesButton"
                     value={"yes"}
                     className="h-5 w-5 accent-[#ee9492]"
+                    checked={participate} 
+                    onChange={() => setParticipate(true)}
                   />
                   <label htmlFor="yesButton" className="pl-3 text-base font-medium text-gray-700">
                     Có
@@ -68,6 +75,8 @@ const Rsvp = () => {
                     id="noButton"
                     value={"no"}
                     className="h-5 w-5 accent-[#ee9492]"
+                    checked={!participate} 
+                    onChange={() => setParticipate(false)}
                   />
                   <label htmlFor="noButton" className="pl-3 text-base font-medium text-gray-700">
                     Không
@@ -75,38 +84,40 @@ const Rsvp = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-wrap">
-              <div className="w-1/2 pr-3">
-                <div className="mb-5">
-                  <label htmlFor="location" className="mb-3 block text-base font-medium text-gray-700">
-                    Đám cưới
-                  </label>
-                  <select
-                    name="location"
-                    id="location"
-                    className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-[#ee9492] focus:shadow-md"
-                  >
-                    <option value="groom">Nhà trai</option>
-                    <option value="bride">Nhà gái</option>
-                  </select>
+            {participate &&
+              <div className="flex flex-wrap">
+                <div className="w-1/2 pr-3">
+                  <div className="mb-5">
+                    <label htmlFor="location" className="mb-3 block text-base font-medium text-gray-700">
+                      Đám cưới
+                    </label>
+                    <select
+                      name="location"
+                      id="location"
+                      className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-[#ee9492] focus:shadow-md"
+                    >
+                      <option value="groom">Nhà trai</option>
+                      <option value="bride">Nhà gái</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="w-1/2 pl-3">
+                  <div className="mb-5">
+                    <label htmlFor="numOfGuest" className="mb-3 block text-base font-medium text-gray-700">
+                      Số lượng khách
+                    </label>
+                    <input
+                      type="number"
+                      name="numOfGuest"
+                      id="numOfGuest"
+                      placeholder="1"
+                      min="1"
+                      className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-[#ee9492] focus:shadow-md"
+                    />
+                  </div>
                 </div>
               </div>
-              <div className="w-1/2 pl-3">
-                <div className="mb-5">
-                  <label htmlFor="numOfGuest" className="mb-3 block text-base font-medium text-gray-700">
-                    Số lượng khách
-                  </label>
-                  <input
-                    type="number"
-                    name="numOfGuest"
-                    id="numOfGuest"
-                    placeholder="1"
-                    min="0"
-                    className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-[#ee9492] focus:shadow-md"
-                  />
-                </div>
-              </div>
-            </div>
+            }
             <div className="mb-5">
               <label htmlFor="message" className="mb-3 block text-base font-medium text-gray-700">
                 Lời chúc tới Cô dâu & Chú rể
