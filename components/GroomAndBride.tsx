@@ -1,6 +1,6 @@
 import groom from '../public/groom.jpg';
 import bride from '../public/bride.jpg';
-import orangeFlower from '../public/orangeFlower.png';
+import orangeFlower from '../public/orangeFlower.webp';
 
 const data = [
   {

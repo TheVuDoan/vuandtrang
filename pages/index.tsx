@@ -1,6 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+
 import AlbumSlider from '../components/AlbumSlider';
 import GroomAndBride from '../components/GroomAndBride';
 import Hero from '../components/Hero';
@@ -21,7 +22,7 @@ const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
         <title>VuandTrang Wedding Site!</title>
         <meta
           property="og:image"
-          content="https://vandt.day/hero.jpg"
+          content="https://vandt.day/hero.webp"
         />
       </Head>
       <Hero />
