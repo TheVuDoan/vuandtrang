@@ -61,7 +61,7 @@ const WeddingInfo = () => {
       <div className="w-full flex flex-wrap text-center">
         {data.map((item) =>
           <div className="w-full md:w-1/2" key={item.cardTitle}>
-            <div className="flex flex-col py-4 lg:p-20">
+            <div className="flex flex-col items-center py-4 lg:p-20">
               <InfoModal {...item} />
             </div>
           </div>
@@ -76,7 +76,7 @@ const InfoModal: React.FC<WeddingInfoModalProps> = (props: WeddingInfoModalProps
 
   return (
     <>
-      <div className="p-6 bg-white border border-gray-200 rounded-md shadow">
+      <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-md shadow">
         <h2 className="mb-2 text-2xl font-bold text-gray-700">{props.cardTitle}</h2>
         <p className="mb-2 text-gray-700">
           <CalendarIcon className="h-4 w-4 inline mb-1" /> {props.time}
