@@ -18,12 +18,12 @@ const data: WeddingInfoModalProps[] = [
       {
         time: '17:30 - Lễ thành hôn',
         icon: <GiftIcon />,
-        activity: 'Lễ thành hôn.'
+        activity: 'Hòa nhịp vào thời khắc làm lễ trọng đại, chứng kiến những phút giây thiêng liêng của cô dâu chú rể.'
       },
       {
         time: '18:00 - Khai tiệc',
         icon: <CakeIcon />,
-        activity: 'Tận hưỡng bữa tối và thưởng thức những món quà văn nghệ của gia đình, bạn bè cô dâu chú rể.'
+        activity: 'Tận hưỡng bữa tối thân mật và thưởng thức những món quà văn nghệ của gia đình, bạn bè cô dâu chú rể.'
       }
     ]
   },
@@ -41,7 +41,7 @@ const data: WeddingInfoModalProps[] = [
       {
         time: '11:00 - Lễ thành hôn',
         icon: <GiftIcon />,
-        activity: 'Lễ thành hôn.'
+        activity: 'Hòa nhịp vào thời khắc làm lễ trọng đại, chứng kiến những phút giây thiêng liêng của cô dâu chú rể.'
       },
       {
         time: '11:30 - Khai tiệc',
@@ -61,7 +61,7 @@ const WeddingInfo = () => {
       <div className="w-full flex flex-wrap text-center">
         {data.map((item) =>
           <div className="w-full md:w-1/2" key={item.cardTitle}>
-            <div className="flex flex-col items-center py-4 lg:p-20">
+            <div className="flex flex-col py-4 lg:p-20">
               <InfoModal {...item} />
             </div>
           </div>
@@ -76,7 +76,7 @@ const InfoModal: React.FC<WeddingInfoModalProps> = (props: WeddingInfoModalProps
 
   return (
     <>
-      <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-md shadow">
+      <div className="p-6 bg-white border border-gray-200 rounded-md shadow">
         <h2 className="mb-2 text-2xl font-bold text-gray-700">{props.cardTitle}</h2>
         <p className="mb-2 text-gray-700">
           <CalendarIcon className="h-4 w-4 inline mb-1" /> {props.time}
@@ -161,7 +161,7 @@ const InfoModal: React.FC<WeddingInfoModalProps> = (props: WeddingInfoModalProps
                               {milestone.icon}
                             </div>
                             <p className="text-sm font-bold text-[#ee9492]">{milestone.time}</p>
-                            <p className="mb-4 text-base font-normal text-gray-500">{milestone.activity}</p>
+                            <p className="mb-4 text-base font-normal text-gray-700">{milestone.activity}</p>
                           </li>
                         )}
                       </ol>

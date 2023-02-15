@@ -1,4 +1,4 @@
-import cloudinary from './cloudinary'
+import cloudinary from './cloudinary';
 
 let cachedResults
 
@@ -8,10 +8,10 @@ export default async function getResults() {
       .expression(`folder:${process.env.WEDDING_FOLDER}/*`)
       .sort_by('public_id', 'desc')
       .max_results(400)
-      .execute()
+      .execute();
 
-    cachedResults = fetchedResults
+    cachedResults = fetchedResults;
   }
 
-  return cachedResults
+  return cachedResults;
 }

@@ -1,6 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
 
 import AlbumSlider from '../components/AlbumSlider';
 import GroomAndBride from '../components/GroomAndBride';
@@ -14,8 +13,6 @@ import getBase64ImageUrl from '../utils/getBase64ImageUrl';
 import type { ImageProps } from '../utils/types';
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
-  const router = useRouter();
-
   return (
     <>
       <Head>
