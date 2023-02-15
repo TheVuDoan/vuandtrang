@@ -18,12 +18,12 @@ const data: WeddingInfoModalProps[] = [
       {
         time: '17:30 - Lễ thành hôn',
         icon: <GiftIcon />,
-        activity: 'Lễ thành hôn.'
+        activity: 'Hòa nhịp vào thời khắc làm lễ trọng đại, chứng kiến những phút giây thiêng liêng của cô dâu chú rể.'
       },
       {
         time: '18:00 - Khai tiệc',
         icon: <CakeIcon />,
-        activity: 'Tận hưỡng bữa tối và thưởng thức những món quà văn nghệ của gia đình, bạn bè cô dâu chú rể.'
+        activity: 'Tận hưỡng bữa tối thân mật và thưởng thức những món quà văn nghệ của gia đình, bạn bè cô dâu chú rể.'
       }
     ]
   },
@@ -41,7 +41,7 @@ const data: WeddingInfoModalProps[] = [
       {
         time: '11:00 - Lễ thành hôn',
         icon: <GiftIcon />,
-        activity: 'Lễ thành hôn.'
+        activity: 'Hòa nhịp vào thời khắc làm lễ trọng đại, chứng kiến những phút giây thiêng liêng của cô dâu chú rể.'
       },
       {
         time: '11:30 - Khai tiệc',
@@ -161,7 +161,7 @@ const InfoModal: React.FC<WeddingInfoModalProps> = (props: WeddingInfoModalProps
                               {milestone.icon}
                             </div>
                             <p className="text-sm font-bold text-[#ee9492]">{milestone.time}</p>
-                            <p className="mb-4 text-base font-normal text-gray-500">{milestone.activity}</p>
+                            <p className="mb-4 text-base font-normal text-gray-700">{milestone.activity}</p>
                           </li>
                         )}
                       </ol>

@@ -52,7 +52,7 @@ const AlbumSlider = ({slides}) => {
   })
 
   const arrowStyle =
-    'absolute top-0 bottom-0 flex items-center justify-center text-gray-500';
+    'absolute top-0 bottom-0 flex items-center text-gray-500';
 
   const sliderControl = isLeft => (
     <button

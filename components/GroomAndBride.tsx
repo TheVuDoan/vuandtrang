@@ -1,19 +1,5 @@
-import groom from '../public/groom.jpg';
-import bride from '../public/bride.jpg';
 import orangeFlower from '../public/orangeFlower.webp';
-
-const data = [
-  {
-    image: bride,
-    alt: 'Cô dâu',
-    name: 'Vũ Minh Trang'
-  },
-  {
-    image: groom,
-    alt: 'Chú rể',
-    name: 'Đoàn Thế Vũ'
-  }
-];
+import { groomAndBride } from '../utils/common';
 
 const GroomAndBride = () => {
   return (
@@ -22,7 +8,7 @@ const GroomAndBride = () => {
         Cô dâu & Chú rể
       </h1>
       <div className="w-full flex flex-wrap pb-10">
-        {data.map((item) =>
+        {groomAndBride.map((item) =>
           <div className="w-full md:w-1/2" key={item.alt} >
             <div className="flex flex-col items-center py-5 lg:p-20">
               <img
