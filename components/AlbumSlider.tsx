@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image'
 import { createRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
@@ -87,7 +88,13 @@ const AlbumSlider = ({slides}) => {
             {sliderControl(true)}
             {slides.map((img, i) => (
               <div className="w-full flex-shrink-0" key={img.id} ref={refs[i]}>
-                <img src={img.blurDataUrl} className="w-full object-contain" />
+                <Image
+                  src={img.blurDataUrl}
+                  alt={img.public_id}
+                  className="w-full object-contain"
+                  width={img.width}
+                  height={img.height}
+                />
               </div>
             ))}
             {sliderControl(false)}

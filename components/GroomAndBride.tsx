@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import orangeFlower from '../public/orangeFlower.webp';
 import { groomAndBride } from '../utils/common';
 
@@ -11,10 +12,12 @@ const GroomAndBride = () => {
         {groomAndBride.map((item) =>
           <div className="w-full md:w-1/2" key={item.alt} >
             <div className="flex flex-col items-center py-5 lg:p-20">
-              <img
+              <Image
                 src={item.image.src}
                 alt={item.alt}
-                className="w-52 h-52 rounded-full mb-8"
+                className="rounded-full mb-8"
+                width={208}
+                height={208}
               />
               <h2 className="text-4xl text-gray-800 font-great-vibes">
                 {item.name}
