@@ -27,7 +27,7 @@ const GroomAndBride = () => {
         )}
       </div>
       <div className="absolute inset-x-0 -bottom-14 flex justify-center items-center">
-        <img className="w-52" src={orangeFlower.src} />
+        <Image className="w-52" src={orangeFlower.src} alt="orangeFlower" width={208} height={128} />
       </div>
     </section>
   );
