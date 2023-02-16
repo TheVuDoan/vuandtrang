@@ -86,14 +86,15 @@ const AlbumSlider = ({slides}) => {
         <div className="relative w-full">
           <div className="carousel">
             {sliderControl(true)}
-            {slides.map((img, i) => (
-              <div className="w-full flex-shrink-0" key={img.id} ref={refs[i]}>
+            {slides.map(({ id, public_id, format, blurDataUrl, width, height }, i) => (
+              <div className="w-full flex-shrink-0" key={id} ref={refs[i]}>
                 <Image
-                  src={img.blurDataUrl}
-                  alt={img.public_id}
+                  blurDataURL={blurDataUrl}
+                  src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_1500/${public_id}.${format}`}
+                  alt={public_id}
                   className="w-full object-contain"
-                  width={img.width}
-                  height={img.height}
+                  width={width}
+                  height={height}
                 />
               </div>
             ))}

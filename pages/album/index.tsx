@@ -42,7 +42,7 @@ const Album: NextPage = ({ images }: { images: ImageProps[] }) => {
           {images.map(({ id, public_id, format, blurDataUrl }) => (
             <div className="after:content group relative mb-5 block w-full cursor-zoom-in after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:shadow-highlight" key={id}>
               <Image
-                alt="Next.js Conf photo"
+                alt={public_id}
                 className="transform rounded-lg brightness-90 transition will-change-auto group-hover:brightness-110"
                 style={{ transform: 'translate3d(0, 0, 0)' }}
                 placeholder="blur"
