@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import orangeFlower from '../public/orangeFlower.webp';
+import orangeFlower from '../public/common/orangeFlower.webp';
 import { groomAndBride } from '../utils/common';
 
 const GroomAndBride = () => {

@@ -68,7 +68,7 @@ const AlbumSlider = ({slides}) => {
   );
 
   return (
-    <section className="py-10 px-10">
+    <section className="p-10">
       <h1 className="text-5xl text-center font-great-vibes text-gray-700 mb-6">
         Album cưới
       </h1>
@@ -82,7 +82,7 @@ const AlbumSlider = ({slides}) => {
           </button>
         </Link>
       </div>
-      <div className="md:px-72 flex items-center" {...handlers}>
+      <div className="lg:px-72 flex items-center" {...handlers}>
         <div className="relative w-full">
           <div className="carousel">
             {sliderControl(true)}

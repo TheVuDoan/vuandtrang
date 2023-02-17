@@ -1,5 +1,5 @@
-import groom from '../public/groom.jpg';
-import bride from '../public/bride.jpg';
+import groom from '../public/groom.webp';
+import bride from '../public/bride.webp';
 
 export const groomAndBride = [
   {

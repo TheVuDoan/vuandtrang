@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import lineBottom from '../public/lineBottom.webp';
-import lineTop from '../public/lineTop.webp';
+import lineBottom from '../public/common/lineBottom.webp';
+import lineTop from '../public/common/lineTop.webp';
 
 const Hero = () => {
   return (

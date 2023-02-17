@@ -2,7 +2,7 @@ import { ourStories } from '../utils/common';
 
 const OurStory = () => {
   return (
-    <section className="pt-20 pb-10 px-10 md:px-48 text-gray-700">
+    <section className="pt-20 pb-10 px-10 lg:px-48 text-gray-700">
       <h1 className="text-5xl text-center font-great-vibes mb-10 px-5">
         Câu chuyện của chúng mình
       </h1>
