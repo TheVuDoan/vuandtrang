@@ -68,7 +68,7 @@ export default Album;
 export async function getStaticProps() {
   const results = await cloudinary.v2.search
     .expression(`folder:${process.env.WEDDING_FOLDER}/*`)
-    .sort_by('public_id', 'desc')
+    .sort_by('filename', 'asc')
     .max_results(400)
     .execute();
   let reducedResults: ImageProps[] = [];
