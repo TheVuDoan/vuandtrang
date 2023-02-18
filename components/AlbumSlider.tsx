@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image'
 import { createRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
@@ -67,7 +68,7 @@ const AlbumSlider = ({slides}) => {
   );
 
   return (
-    <section className="py-10 px-10">
+    <section className="p-10">
       <h1 className="text-5xl text-center font-great-vibes text-gray-700 mb-6">
         Album cưới
       </h1>
@@ -81,13 +82,20 @@ const AlbumSlider = ({slides}) => {
           </button>
         </Link>
       </div>
-      <div className="md:px-72 flex items-center" {...handlers}>
+      <div className="lg:px-72 flex items-center" {...handlers}>
         <div className="relative w-full">
           <div className="carousel">
             {sliderControl(true)}
-            {slides.map((img, i) => (
-              <div className="w-full flex-shrink-0" key={img.id} ref={refs[i]}>
-                <img src={img.blurDataUrl} className="w-full object-contain" />
+            {slides.map(({ id, public_id, format, blurDataUrl, width, height }, i) => (
+              <div className="w-full flex-shrink-0" key={id} ref={refs[i]}>
+                <Image
+                  blurDataURL={blurDataUrl}
+                  src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_1500/${public_id}.${format}`}
+                  alt={public_id}
+                  className="w-full object-contain"
+                  width={width}
+                  height={height}
+                />
               </div>
             ))}
             {sliderControl(false)}

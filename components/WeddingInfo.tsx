@@ -54,7 +54,7 @@ const data: WeddingInfoModalProps[] = [
 
 const WeddingInfo = () => {
   return (
-    <section className="p-10 bg-[url('../public/orangeBackground.webp')]">
+    <section className="p-10 bg-[url('../public/common/orangeBackground.webp')]">
       <h1 className="text-5xl text-center font-great-vibes text-gray-700 mb-6">
         Thông tin lễ cưới
       </h1>

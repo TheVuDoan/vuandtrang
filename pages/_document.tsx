@@ -6,8 +6,8 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link rel="icon" href="/logo.svg" />
-          <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Great Vibes" />
-          <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Muli" />
+          <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Great Vibes&display=swap" />
+          <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Muli&display=swap" />
           <meta
             name="description"
             content="VuandTrang Wedding Site!"

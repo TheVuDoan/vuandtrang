@@ -29,7 +29,7 @@ const Rsvp = () => {
   };
 
   return (
-    <section className="py-8 px-10 md:px-48 text-gray-700 bg-opacity-95 bg-center bg-no-repeat bg-cover bg-[url('../public/rsvp.webp')]">
+    <section className="p-10 md:px-48 text-gray-700 bg-opacity-95 bg-center bg-no-repeat bg-cover bg-[url('../public/rsvp.webp')]">
       <h1 className="text-5xl text-center font-great-vibes mb-6">
         RSVP
       </h1>
