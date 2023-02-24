@@ -111,7 +111,8 @@ const Rsvp = () => {
                       name="numOfGuest"
                       id="numOfGuest"
                       placeholder="1"
-                      min="1"
+                      min={1}
+                      defaultValue={1}
                       className="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-gray-700 outline-none focus:border-[#ee9492] focus:shadow-md"
                     />
                   </div>
