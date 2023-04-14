@@ -1,35 +1,13 @@
 import type { NextPage } from 'next';
-import Head from 'next/head';
 
-import AlbumSlider from '../components/AlbumSlider';
-import GroomAndBride from '../components/GroomAndBride';
-import Hero from '../components/Hero';
-import Introduction from '../components/Introduction';
-import OurStory from '../components/OurStory';
-import Rsvp from '../components/Rsvp';
-import WeddingInfo from '../components/WeddingInfo';
+import LandingPage from '../components/LandingPage';
 import cloudinary from '../utils/cloudinary';
 import getBase64ImageUrl from '../utils/getBase64ImageUrl';
 import type { ImageProps } from '../utils/types';
 
 const Home: NextPage = ({ images }: { images: ImageProps[] }) => {
   return (
-    <>
-      <Head>
-        <title>VuandTrang Wedding Site!</title>
-        <meta
-          property="og:image"
-          content="https://vandt.day/hero.webp"
-        />
-      </Head>
-      <Hero />
-      <Introduction />
-      <GroomAndBride />
-      <OurStory />
-      <WeddingInfo />
-      <AlbumSlider slides={images} />
-      <Rsvp />
-    </>
+    <LandingPage images={images} />
   )
 }
 

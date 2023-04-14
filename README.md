@@ -1,31 +1,55 @@
-# Next.js & Cloudinary example app
+# VuandTrang Wedding Website Template
 
-This example shows how to create an image gallery site using Next.js, [Cloudinary](https://cloudinary.com), and [Tailwind](https://tailwindcss.com).
+This is a free Wedding Website Template built with [Next.js](https://nextjs.org/), [Cloudinary](https://cloudinary.com), and [Tailwind](https://tailwindcss.com).
 
-## Deploy your own
+Feel free to fork this repo and build your own version of Wedding Website.
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or view the demo [here](https://nextconf-images.vercel.app/)
+Happy Wedding, and Happy Coding!
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-cloudinary&project-name=nextjs-image-gallery&repository-name=with-cloudinary&env=NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,CLOUDINARY_API_KEY,CLOUDINARY_API_SECRET,CLOUDINARY_FOLDER&envDescription=API%20Keys%20from%20Cloudinary%20needed%20to%20run%20this%20application.)
+## Tech Stack
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Completely free services and frameworks used in this template:
+- Front-end Framework: [Next.js](https://nextjs.org/) (with Typescript)
+- CSS Framework: [Tailwind](https://tailwindcss.com)
+    - UI Components: [HeadlessUI](https://headlessui.com/)
+    - SVG Icons: [Heroicons](https://heroicons.com/)
+- Image Storage and API: [Cloudinary](https://cloudinary.com)
+- Form: [Airtable](https://airtable.com/)
+- Package Manager: [pnpm](https://pnpm.io/)
+
+## Feature
+
+- Landing Page
+    - Hero section
+    - Introduction section
+    - GroomAndBride section
+    - OutStories section
+    - AlbumSlider section
+    - WeddingInfo section
+    - RSVP section
+- Album Page
+
+## Demo
+
+You can view the demo [here](https://vandt.day/)
 
 ## How to use
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example::
-
 ```bash
- npx create-next-app --example with-cloudinary nextjs-image-gallery
+pnpm install
+pnpm run dev
 ```
 
-```bash
-yarn create next-app --example with-cloudinary nextjs-image-gallery
-```
+Docker comming soon!
 
-```bash
-pnpm create next-app --example with-cloudinary nextjs-image-gallery
-```
+## Deploy your own
+
+Deploy the project using [Vercel](https://vercel.com).
+
+Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## References
 
+- Next.js + Cloudinary Template: https://vercel.com/templates/next.js/image-gallery-starter
 - Cloudinary API: https://cloudinary.com/documentation/transformation_reference
+- Airtable API: https://airtable.com/developers/web/api
