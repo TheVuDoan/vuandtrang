@@ -59,7 +59,7 @@ const AlbumSlider = ({slides}) => {
     <button
       type="button"
       onClick={isLeft ? previousImage : nextImage}
-      className={`${arrowStyle} ${isLeft ? 'md:-left-12 -left-8' : 'md:-right-12 -right-8'}`}
+      className={`hidden lg:inline ${arrowStyle} ${isLeft ? 'md:-left-12 -left-8' : 'md:-right-12 -right-8'}`}
     >
       <span role="img" aria-label={`Arrow ${isLeft ? 'left' : 'right'}`}>
         {isLeft ? <ChevronLeftIcon className="h-8 w-8" /> : <ChevronRightIcon className="h-8 w-8" />}
@@ -68,7 +68,7 @@ const AlbumSlider = ({slides}) => {
   );
 
   return (
-    <section className="p-10">
+    <section className="py-10">
       <h1 className="text-5xl text-center font-great-vibes text-gray-700 mb-6">
         Album cưới
       </h1>
@@ -99,6 +99,15 @@ const AlbumSlider = ({slides}) => {
               </div>
             ))}
             {sliderControl(false)}
+          </div>
+          <div className="space-x-1 text-center mt-4">
+            {slides.map((img, i) => (
+              <button
+                className={`w-3 h-3 md:w-4 md:h-4 rounded-full ${i === currentImage ? 'bg-[#ee9492]' : 'bg-gray-200'}`}
+                key={img.id}
+                onClick={() => scrollToImage(i)}
+              ></button>
+            ))}
           </div>
         </div>
       </div>
