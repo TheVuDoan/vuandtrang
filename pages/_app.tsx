@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app';
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import Layout from '../components/Layout';
-import Loading from '../components/Loading';
+import Loading from '../components/Layout/Loading';
 import '../styles/index.css';
 
 export default function MyApp({ Component, pageProps }: AppProps) {

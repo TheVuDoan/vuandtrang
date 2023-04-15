@@ -1,4 +1,4 @@
-import { ourStories } from '../utils/common';
+import { ourStories } from '../../utils/config';
 
 const OurStory = () => {
   return (

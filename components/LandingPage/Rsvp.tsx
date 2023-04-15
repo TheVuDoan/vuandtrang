@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { table } from "../utils/airtable";
+import { table } from "../../utils/airtable";
 
 const Rsvp = () => {
   interface formDataType {[key:string]: FormDataEntryValue}

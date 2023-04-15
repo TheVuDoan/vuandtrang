@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import lineBottom from '../public/common/lineBottom.webp';
-import lineTop from '../public/common/lineTop.webp';
+import lineBottom from '../../public/common/lineBottom.webp';
+import lineTop from '../../public/common/lineTop.webp';
+import { groomAndBride } from '../../utils/config';
 
 const Hero = () => {
   return (
@@ -9,10 +10,10 @@ const Hero = () => {
         <div className="my-20 space-y-4 text-center font-great-vibes">
           <Image className="mx-auto" alt="lineTop" src={lineTop.src} width={220} height={35}/>
           <div className="text-gray-100 text-5xl xs:text-6xl md:text-7xl">
-            <span>Thế Vũ</span>
+            <span>{groomAndBride.groom.shortName}</span>
           </div>
           <div className="text-gray-200 text-5xl xs:text-6xl md:text-7xl">
-            <span>Minh Trang</span>
+            <span>{groomAndBride.bride.shortName}</span>
           </div>
           <Image className="mx-auto" alt="lineBottom" src={lineBottom.src} width={220} height={35} />
         </div>

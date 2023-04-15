@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import orangeFlower from '../public/common/orangeFlower.webp';
-import { groomAndBride } from '../utils/common';
+import orangeFlower from '../../public/common/orangeFlower.webp';
+import { groomAndBride } from '../../utils/config';
 
 const GroomAndBride = () => {
   return (
@@ -9,7 +9,7 @@ const GroomAndBride = () => {
         Cô dâu & Chú rể
       </h1>
       <div className="w-full flex flex-wrap pb-10">
-        {groomAndBride.map((item) =>
+        {Object.values(groomAndBride).map((item) =>
           <div className="w-full md:w-1/2" key={item.alt} >
             <div className="flex flex-col items-center py-5 lg:p-20">
               <Image

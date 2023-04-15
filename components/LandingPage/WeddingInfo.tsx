@@ -1,56 +1,11 @@
 import { Fragment, useState } from 'react';
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, Transition } from '@headlessui/react';
 import { MapPinIcon, CalendarIcon, XMarkIcon, ChatBubbleLeftRightIcon, GiftIcon, CakeIcon } from '@heroicons/react/24/outline';
-import type { WeddingInfoModalProps } from '../utils/types';
 
-const data: WeddingInfoModalProps[] = [
-  {
-    cardTitle: 'Lễ cưới nhà gái',
-    location: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3135.0460639195676!2d106.69116121547967!3d20.863217909550816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314a7be3b26b7f15%3A0xfb767616d10e5e50!2zVHJ1bmcgdMOibSB0aeG7h2MgY8aw4bubaSBI4bqjaSDEkMSDbmcgUGxhemEgSOG6o2kgUGjDsm5n!5e0!3m2!1svi!2s!4v1674915525839!5m2!1svi!2s',
-    locationTitle: 'Trung Tâm Tiệc Cưới Hải Đăng Plaza, 19 Trần Khánh Dư, Máy Tơ, Ngô Quyền, Hải Phòng',
-    time: '17:30 1/3/2023',
-    timeline: [
-      {
-        time: '17:00 - Đón Khách',
-        icon: <ChatBubbleLeftRightIcon />,
-        activity: 'Trò chuyện và chụp ảnh lưu niệm cùng cô dâu và chú rể.'
-      },
-      {
-        time: '17:30 - Lễ thành hôn',
-        icon: <GiftIcon />,
-        activity: 'Hòa nhịp vào thời khắc làm lễ trọng đại, chứng kiến những phút giây thiêng liêng của cô dâu chú rể.'
-      },
-      {
-        time: '18:00 - Khai tiệc',
-        icon: <CakeIcon />,
-        activity: 'Tận hưỡng bữa tối thân mật và thưởng thức những món quà văn nghệ của gia đình, bạn bè cô dâu chú rể.'
-      }
-    ]
-  },
-  {
-    cardTitle: 'Lễ cưới nhà trai',
-    location: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.3912117178347!2d105.81358851543025!3d21.01702708600477!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab64a157d313%3A0xc315cd481b1a6e5!2zVHJ1bmcgVMOibSBUaeG7h2MgQ8aw4bubaSBTdGFyIEdhbGF4eQ!5e0!3m2!1svi!2s!4v1674912984562!5m2!1svi!2s',
-    locationTitle: 'Trung Tâm Tiệc Cưới Star Galaxy, 87 Láng Hạ, Thành Công, Ba Đình, Hà Nội',
-    time: '11:00 11/3/2023',
-    timeline: [
-      {
-        time: '10:30 - Đón Khách',
-        icon: <ChatBubbleLeftRightIcon />,
-        activity: 'Đón khách, chụp ảnh lưu niệm cùng cô dâu và chú rể.'
-      },
-      {
-        time: '11:00 - Lễ thành hôn',
-        icon: <GiftIcon />,
-        activity: 'Hòa nhịp vào thời khắc làm lễ trọng đại, chứng kiến những phút giây thiêng liêng của cô dâu chú rể.'
-      },
-      {
-        time: '11:30 - Khai tiệc',
-        icon: <CakeIcon />,
-        activity: 'Tận hưỡng bữa trưa và thưởng thức những món quà văn nghệ của gia đình, bạn bè cô dâu chú rể.'
-      }
-    ]
-  }
-];
+import { weddingInfoes } from '../../utils/config';
+import type { WeddingInfoModalProps } from '../../utils/types';
+
+const icons = [<ChatBubbleLeftRightIcon />, <GiftIcon />, <CakeIcon />]
 
 const WeddingInfo = () => {
   return (
@@ -59,7 +14,7 @@ const WeddingInfo = () => {
         Thông tin lễ cưới
       </h1>
       <div className="w-full flex flex-wrap text-center">
-        {data.map((item) =>
+        {weddingInfoes.map((item) =>
           <div className="w-full md:w-1/2" key={item.cardTitle}>
             <div className="flex flex-col items-center py-4 lg:p-20">
               <InfoModal {...item} />
@@ -155,10 +110,10 @@ const InfoModal: React.FC<WeddingInfoModalProps> = (props: WeddingInfoModalProps
                         Lịch trình đám cưới
                       </h2>
                       <ol className="relative border-l border-gray-200">
-                        {props.timeline.map((milestone) => 
+                        {props.timeline.map((milestone, index) => 
                           <li className="mb-10 ml-4" key={milestone.time}>
                             <div className="absolute w-4 h-4 mt-0.5 -left-2 border border-white">
-                              {milestone.icon}
+                              {icons[index]}
                             </div>
                             <p className="text-sm font-bold text-[#ee9492]">{milestone.time}</p>
                             <p className="mb-4 text-base font-normal text-gray-700">{milestone.activity}</p>

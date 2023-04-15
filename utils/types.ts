@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 export interface ImageProps {
   id: number
   height: string
@@ -18,6 +17,5 @@ export interface WeddingInfoModalProps {
 
 export interface WeddingTimelineProps {
   time: string
-  icon: JSX.Element
   activity: string
 }
